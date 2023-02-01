@@ -27,8 +27,13 @@ const Productos = () => {
             <table className="table table-striped">
                 <thead className="bg-primary table-dark text-center">
                     <tr>
+                        <th scope="col">Codigo de barras</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Precio</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio de compra</th>
+                        <th scope="col">Precio de venta</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>

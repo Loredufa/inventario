@@ -1,79 +1,101 @@
 import {
-    AGREGAR_PRODUCTO,
-    AGREGAR_PRODUCTO_EXITO,
-    AGREGAR_PRODUCTO_ERROR,
-    COMENZAR_DESCARGA_PRODUCTOS,
-    DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR,
-    OBTENER_PRODUCTO_ELIMINAR,
-    PRODUCTO_ELIMINADO_EXITO,
-    PRODUCTO_ELIMINADO_ERROR,
-    OBTENER_PRODUCTO_EDITAR,
-    COMENZAR_EDICION_PRODUCTOS,
-    PRODUCTO_EDITADO_EXITO,
-    PRODUCTO_EDITADO_ERROR
+    AGREGAR,
+    AGREGAR_EXITO,
+    AGREGAR_ERROR,
+    COMENZAR_DESCARGA,
+    DESCARGA_EXITO,
+    DESCARGA_PROVEEDOR_EXITO,
+    DESCARGA_CIENTE_EXITO,
+    DESCARGA_ERROR,
+    OBTENER_ELIMINAR,
+    ELIMINADO_EXITO,
+    ELIMINADO_ERROR,
+    OBTENER_EDITAR,
+    COMENZAR_EDICION,
+    EDITADO_EXITO,
+    EDITADO_ERROR
 } from '../types';
 //Cada reducer tiene su propio state
 
 const initialState = {
     productos: [],
+    proveedores: [],
+    clientes: [],
     error: null,
     loading: false,
     productoeliminar: null,
-    productoeditar: null
+    productoeditar: null,
+    compras:[]
 }
 
 export default function (state = initialState, action ) {
     switch(action.type){
-        case COMENZAR_DESCARGA_PRODUCTOS:
-        case AGREGAR_PRODUCTO : 
+        case COMENZAR_DESCARGA:
+        case AGREGAR : 
             return{
                 ...state,
                 loading: action.payload
             }
-        case AGREGAR_PRODUCTO_EXITO:
+        case AGREGAR_EXITO:
             return{
                 ...state,
                 loading:false,
                 productos: [...state.productos,action.payload]
             }
-        case AGREGAR_PRODUCTO_ERROR:
-        case DESCARGA_PRODUCTOS_ERROR:
-        case PRODUCTO_ELIMINADO_ERROR:
-        case PRODUCTO_EDITADO_ERROR:
+        case AGREGAR_ERROR:
+        case DESCARGA_ERROR:
+        case ELIMINADO_ERROR:
+        case EDITADO_ERROR:
             return{
                 ...state,
                 loading:false,
                 error: action.payload
             }
-        case DESCARGA_PRODUCTOS_EXITO:
+        case DESCARGA_EXITO:
             return{
                 ...state,
                 loading: false,
                 error: null,
-                productos: action.payload
+                productos: action.payload,
+                
             }
-        case OBTENER_PRODUCTO_ELIMINAR:
+            case DESCARGA_PROVEEDOR_EXITO:
+                return{
+                    ...state,
+                    loading: false,
+                    error: null,
+                    proveedores: action.payload,
+                    
+                }
+            case DESCARGA_CIENTE_EXITO:
+                return{
+                    ...state,
+                    loading: false,
+                    error: null,
+                    clientes: action.payload,
+                        
+            }
+        case OBTENER_ELIMINAR:
             return{
                 ...state,
                 productoeliminar: action.payload,
             }
-        case PRODUCTO_ELIMINADO_EXITO:
+        case ELIMINADO_EXITO:
             return{
                 ...state,
                 productos: state.productos.filter(producto => producto.id !== state.productoeliminar),
                 productoeliminar:null
             }
-        case OBTENER_PRODUCTO_EDITAR:
+        case OBTENER_EDITAR:
             return{
                 ...state,
                 productoeditar: action.payload
             }
-        case COMENZAR_EDICION_PRODUCTOS:
+        case COMENZAR_EDICION:
             return{
                 ...state
             }        
-        case PRODUCTO_EDITADO_EXITO:
+        case EDITADO_EXITO:
             return{
                 ...state,
                 productoeditar: null,

@@ -1,23 +1,23 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import { borrarProductoAction , editarProductionAction } from '../actions/productoActions';
+import { borrarClienteAction , editarClienteAction } from '../actions/productoActions';
 
-const Producto = ({producto}) => {
-    const { nombre , precio , id }= producto;
+const Cliente = ({cliente}) => {
+    const { id, nombre , direccion, telefono, whatsapp ,mail, web }= cliente;
 
     const dispatch = useDispatch();
-    const history = useHistory(); // habilitar history para redireccion
+    const navigate = useNavigate(); // habilitar history para redireccion
 
     //Confirmar si desea eliminarlo
     const confirmarEliminarProducto = id => {
         //preguntar al usuario
         Swal.fire({
             title: '¿Estas seguro?',
-            text: "Un producto que se elimina no se puede recuperar!",
+            text: "Un proveedor que se elimina no se puede recuperar!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -27,25 +27,29 @@ const Producto = ({producto}) => {
           }).then((result) => {
             if (result.value) {
                 //pasarlo al action
-                dispatch( borrarProductoAction(id) );
+                dispatch( borrarClienteAction(id) );
               
             }
           })
     }
 
     //Funcion que redirige de forma programada
-    const redireccionarEdicion = producto => {
-        dispatch( editarProductionAction(producto)) ;
-        history.push(`/productos/editar/${producto.id}`);
+    const redireccionarEdicion = cliente => {
+        dispatch( editarClienteAction(cliente)) ;
+        navigate(`/productos/editar/${cliente.id}`);
     }
     return ( 
         <tr className="text-center">
             <td>{nombre}</td>
-            <td><span className="font-weight-bold">$ {precio}</span></td>
+            <td>{direccion}</td>
+            <td><span> {telefono}</span></td>
+            <td><span> {whatsapp}</span></td>
+            <td><span> {mail}</span></td>
+            <td>{web}</td>
             <td className="acciones">
                 <button 
                     type= "button"
-                    onClick= { () => redireccionarEdicion(producto) }
+                    onClick= { () => redireccionarEdicion(cliente) }
                     className="btn btn-primary mr-2">
                     Editar
                 </button>
@@ -60,4 +64,4 @@ const Producto = ({producto}) => {
     );
 }
  
-export default Producto;
+export default Cliente;

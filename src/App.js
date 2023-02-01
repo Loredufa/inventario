@@ -5,27 +5,30 @@ import NuevoProducto from './components/NuevoProducto';
 import EditarProducto from './components/EditarProducto';
 
 
-import { BrowserRouter  as Router , Route , Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NuevoProveedor from './components/NuevoProveedor';
+import Proveedores from './components/Proveedores';
+import NuevoCliente from './components/NuevoCliente';
+import Clientes from './components/Clientes';
 
-//Redux
-import { Provider } from 'react-redux';
-import store from './store';
+
 
 function App() {
   return (
-    <Router>
-      <Provider store={store}> {/* le definimos store porque este provider lo pide */}
-        <Header/>
-
+    <BrowserRouter>
+      <Header/>
         <div className="container mt-5">
-          <Switch>
-            <Route exact path="/" component={Productos} />
-            <Route exact path="/productos/nuevo" component={NuevoProducto} />
-            <Route exact path="/productos/editar/:id" component={EditarProducto} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Productos/>} />
+            <Route path="/proveedores" element={<Proveedores/>} />
+            <Route path="/clientes" element={<Clientes/>} />
+            <Route path="/productos/nuevo" element={<NuevoProducto/>} />
+            <Route path="/productos/nuevoproveedor" element={<NuevoProveedor/>} />
+            <Route path="/productos/nuevocliente" element={<NuevoCliente/>} />
+            <Route path="/productos/editar/:id" element={<EditarProducto/>} />
+          </Routes>
         </div>
-      </Provider>
-    </Router>
+    </BrowserRouter>
    
   );
 }
