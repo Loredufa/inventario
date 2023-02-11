@@ -1,5 +1,4 @@
 const { Product } = require('../models/index')
-const { Provider } = require('../models/index')
 
 function getAllProduct(req, res, next) {
     return Product.findAll()

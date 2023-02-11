@@ -3,7 +3,7 @@ const { Product } = require('../models/index')
 
 const addProduct = async (req, res) => {
     const {codigo_barras, nombre, descripcion, cantidad, precio_compra, precio_venta, categoryId, providerId}= req.body
-    let newProduct = await Product.create({
+    let newProduct = await Product.create ({
         codigo_barras,
         nombre,
         descripcion,
@@ -15,7 +15,7 @@ const addProduct = async (req, res) => {
     let providerdb = await Provider.findAll(
         {
             where: {
-             id:providerId
+             id:providerId 
             }
          })
     newProduct.addProvider(providerdb)

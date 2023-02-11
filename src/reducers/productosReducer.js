@@ -31,6 +31,10 @@ const initialState = {
 export default function (state = initialState, action ) {
     switch(action.type){
         case COMENZAR_DESCARGA:
+        case 'POST_LIST' :
+            return {
+                ...state,
+            }
         case AGREGAR : 
             return{
                 ...state,

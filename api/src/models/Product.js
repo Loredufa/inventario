@@ -15,7 +15,7 @@ module.exports = function(sequelize) {
   },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       },
     
     descripcion: {
@@ -23,7 +23,7 @@ module.exports = function(sequelize) {
       allowNull:true,
     },
     cantidad: {
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       allowNull:true,
     },
     precio_compra: {

@@ -36,7 +36,7 @@ const Proveedor = ({proveedor}) => {
     //Funcion que redirige de forma programada
     const redireccionarEdicion = proveedor => {
         dispatch( editarProveedorAction(proveedor)) ;
-        navigate(`/productos/editar/${proveedor.id}`);
+        navigate(`/proveedores/${proveedor.id}`);
     }
     return ( 
         <tr className="text-center">
