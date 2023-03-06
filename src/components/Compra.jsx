@@ -1,4 +1,5 @@
-import React , { useState } from 'react';
+import React from 'react';
+
 import './styles/NuevaCompra.css'
 
 const Compra= ({ onChange, onRemove, nombre, codigo_barras, cantidad, precio, total_producto }) => {

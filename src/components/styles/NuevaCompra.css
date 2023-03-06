@@ -28,3 +28,7 @@
 .eliminar {
     background-color: red;
 }
+.select {
+    border-color: darkgrey;
+    color: rgb(122, 122, 122);
+}

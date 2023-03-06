@@ -1,10 +1,11 @@
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './styles/NuevaCompra.css'
 // Actions de Redux
-//import { crearNuevaCompraAction } from '../actions/productoActions';
+import { obtenerProveedoresAction, obtenerProductosAction } from '../actions/productoActions';
 import { mostrarAlertaAction , ocultarAlertaAction } from '../actions/alertaActions';
+
 import Compra from './Compra';
 
 const NuevaCompra= () => {
@@ -36,8 +37,15 @@ const NuevaCompra= () => {
     const cargando = useSelector( state => state.productos.loading);
     const error = useSelector( state => state.productos.error);
     const alerta = useSelector ( state => state.alerta.alerta);
+    const proveedores = useSelector ( state => state.productos.proveedores);
+    const productos = useSelector ( state => state.productos.productos);
 
     //const agregarCompra = compra => dispatch( crearNuevaCompraAction(compra));
+    
+    useEffect(() => {
+        dispatch(obtenerProveedoresAction())
+        dispatch(obtenerProductosAction())
+    },[dispatch])
 
     //Cuando el usuario haga submit
     const submitNuevaCompra = e => {
@@ -68,7 +76,9 @@ const NuevaCompra= () => {
         //redireccionar al home
         //navigate('/');
     }    
-   
+    function obtenerNombreProveedor (e) {
+        guardarNombreProveedor(e.target.value)  
+    }
 
     const handleOnChange = (index, name, value) => {
         const copyRows = [...rows];
@@ -88,6 +98,7 @@ const NuevaCompra= () => {
         copyRows.splice(index, 1);
         setRows(copyRows);
     };
+
 
     return ( 
         <div className=" row justify-content-center">
@@ -118,14 +129,13 @@ const NuevaCompra= () => {
                                 />
                             
                                 <label>Proveedor</label>
-                                <input 
-                                    type="text"
-                                    className="input_small Input_medium"
-                                    placeholder="Elije el proveedor"
-                                    name="nombre"
-                                    value={nombreProveedor}
-                                    onChange= {e => guardarNombreProveedor(e.target.value)}
-                                />
+                                <select  className="select Input_medium"
+                                onChange= {e => obtenerNombreProveedor(e)}>
+                                    <option >Elije el proveedor</option>
+                                    {proveedores.map((tem) => (
+                                        <option value={tem.nombre}>{tem.nombre}</option>
+                                            ))}
+                                    </select>
                             </div>
                             {rows.map((row, index) => (
                                 <Compra
