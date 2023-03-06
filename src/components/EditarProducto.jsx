@@ -40,7 +40,7 @@ const EditarProducto = () => {
     }
     console.log(producto)
     
-    const { codigo_barras,nombre , descripcion, precio_compra, precio_venta } = producto;
+    const { codigo_barras,nombre , descripcion, precio_compra, precio_venta } = producto ?? {};
 
     
 

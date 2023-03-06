@@ -15,7 +15,7 @@ function getProductById(req, res, next) {
 }
   
 function putProduct(req, res, next) {
-    const id = req.params.id
+    const id = req.params.id || req.body.id
     const product = req.body
     return Product.update(product, {
       where: {
@@ -26,6 +26,17 @@ function putProduct(req, res, next) {
     }).catch((error) => next(error))
 };
   
+function putProductList(req, res, next) {
+  const product = req.body
+  return Product.update(product, {
+    where: {
+      nombre: product.nombre,
+    },
+  }).then((updateProduct) => {
+      res.send(updateProduct)
+  }).catch((error) => next(error))
+};
+
 function deleteProduct(req, res, next) {
     const id = req.params.id
     return Product.destroy({
@@ -42,6 +53,7 @@ module.exports = {
     getAllProduct,
     getProductById,
     putProduct,
-    deleteProduct
+    deleteProduct,
+    putProductList
 
 }

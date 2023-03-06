@@ -24,6 +24,10 @@ const Header = () => {
             </Link>
             <Link
                 className="btn btn-danger nuevo-post d-block d-md-inline-block"
+                to={'/productos/import'}>Importar &#43;
+            </Link>
+            <Link
+                className="btn btn-danger nuevo-post d-block d-md-inline-block"
                 to={'/proveedores'}>Proveedores
             </Link>
             <Link

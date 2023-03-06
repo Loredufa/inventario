@@ -1,0 +1,30 @@
+.formInLine {
+    vertical-align: middle;
+}
+.input_small {
+    margin: 1%;
+    width: 10%;
+}
+
+.Input_medium {
+    margin-left: 3%;
+    width: 50%;
+}
+
+.Input_cb {
+    margin-right: 1%;
+    width: 10%;
+}
+.ref {
+   background-color:rgb(202, 202, 202);
+}
+.totales {
+    display: flex;
+    justify-content: flex-end;
+}
+.label-totales {
+    margin-top: 1%;
+}
+.eliminar {
+    background-color: red;
+}

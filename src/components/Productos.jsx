@@ -41,9 +41,9 @@ const Productos = () => {
                   {
                     productos.length > 0 ? 
                     (
-                        productos.map(producto => (
+                        productos.map((producto, index) => (
                             <Producto
-                            key={producto.id}
+                            key={index}
                             producto={producto}
                         />
                     ))

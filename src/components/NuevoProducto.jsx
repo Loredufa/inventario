@@ -8,10 +8,14 @@ import { mostrarAlertaAction , ocultarAlertaAction } from '../actions/alertaActi
 const NuevoProducto = () => {
     
     //State del componente
+    const [ codigo_producto, guardarCodigoProducto ] = useState('');
     const [ nombre, guardarNombre ] = useState('');
     const [ codigo_barras, guardarCodigo ] = useState('');
     const [ descripcion, guardarDescripcion ] = useState('');
     const [ precio_compra, guardarPrecioCompra ] = useState('');
+    const [ precio, guardarPrecio ] = useState('');
+    const [ descuento, guardarPrecioDescuento ] = useState('');
+    const [ iva, guardarPrecioIva ] = useState('');
     const [ precio_venta, guardarPrecioVenta ] = useState('');
     const [ providerId, guardarProveedor] = useState('');
     
@@ -23,6 +27,8 @@ const NuevoProducto = () => {
     const error = useSelector( state => state.productos.error);
     const alerta = useSelector ( state => state.alerta.alerta);
 
+    //const allProduct = JSON.stringify(producto)
+    //console.log(allProduct)
     const agregarProducto = producto => dispatch( crearNuevoProductoAction(producto));
 
     //Cuando el usuario haga submit
@@ -41,19 +47,23 @@ const NuevoProducto = () => {
         }
         //Si no hay errores
         dispatch ( ocultarAlertaAction() );
-        //Crear el nuevo producto
+
         agregarProducto({
+            codigo_producto,
             nombre,
             codigo_barras,
             descripcion,
             precio_compra,
+            precio,
+            descuento,
+            iva,
             precio_venta,
             providerId
         });
 
-        //redireccionar al home
-        navigate('/');
-    }    
+     //redireccionar al home
+      navigate('/');
+}
     
     
     return ( 
@@ -71,7 +81,18 @@ const NuevoProducto = () => {
                             onSubmit={submitNuevoProducto}
                         >
                             <div className="form-group">
-                                <label>Nuevo Producto</label>
+                                <label>Codigo del producto</label>
+                                <input 
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Codigo del Producto para el proveedor"
+                                    name="codigo_poducto"
+                                    value={codigo_producto}
+                                    onChange= {e => guardarCodigoProducto(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Nombre del Producto</label>
                                 <input 
                                     type="text"
                                     className="form-control"
@@ -105,7 +126,7 @@ const NuevoProducto = () => {
                             </div>
 
                             <div className="form-group">
-                                <label>Costo del Producto</label>
+                                <label>Costo de compra</label>
                                 <input 
                                     type="number"
                                     className="form-control"
@@ -113,6 +134,39 @@ const NuevoProducto = () => {
                                     name="precio"
                                     value={precio_compra}
                                     onChange= {e => guardarPrecioCompra(Number(e.target.value))}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Precio de lista</label>
+                                <input 
+                                    type="number"
+                                    className="form-control"
+                                    placeholder="Precio de lista"
+                                    name="precio_lista"
+                                    value={precio}
+                                    onChange= {e => guardarPrecio(Number(e.target.value))}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Descuento</label>
+                                <input 
+                                    type="number"
+                                    className="form-control"
+                                    placeholder="En número ej:0,6"
+                                    name="descuento"
+                                    value={descuento}
+                                    onChange= {e => guardarPrecioDescuento(Number(e.target.value))}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>IVA</label>
+                                <input 
+                                    type="number"
+                                    className="form-control"
+                                    placeholder="Correspondiente al producto, ej: 21"
+                                    name="iva"
+                                    value={iva}
+                                    onChange= {e => guardarPrecioIva(Number(e.target.value))}
                                 />
                             </div>
                             <div className="form-group">

@@ -9,13 +9,18 @@ module.exports = function(sequelize) {
       autoIncrement: true,
       primaryKey: true
     },
+    codigo_producto: {
+      type:DataTypes.STRING,
+      allowNull:true,
+  },
     codigo_barras: {
       type:DataTypes.STRING,
       allowNull:true,
   },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      unique: true
       },
     
     descripcion: {
@@ -23,6 +28,18 @@ module.exports = function(sequelize) {
       allowNull:true,
     },
     cantidad: {
+      type:DataTypes.STRING,
+      allowNull:true,
+    },
+    precio: {
+      type:DataTypes.STRING,
+      allowNull:true,
+    },
+    descuento: {
+      type:DataTypes.STRING,
+      allowNull:true,
+    },
+    iva: {
       type:DataTypes.STRING,
       allowNull:true,
     },

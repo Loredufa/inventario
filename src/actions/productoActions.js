@@ -42,7 +42,7 @@ export function postList (payload) {
             Swal.fire({
                 icon: 'error',
                 title: 'Hubo un error',
-                text:'Hubo un error,intenta de nuevo'
+                text:`Hubo un error, el producto ${payload}`
             });
         }
     }
@@ -169,12 +169,6 @@ export function obtenerProductosAction(){
         try {
             const respuesta = await clienteAxios.get('/productos');
             dispatch( descargaProductosExitosa(respuesta.data));
-            //asi se puede poner para que te muestre el cargando... y traiga los datos como es una api ligera el cargando ni se muestra
-            // setTimeout( async()=> {
-            //     const respuesta = await clienteAxios.get('/productos');
-            //     dispatch( descargaProductosExitosa(respuesta.data));
-            // },1000);
-
         } catch (error) {
             dispatch(descargaProductosError());
         }
@@ -187,13 +181,7 @@ export function obtenerProveedoresAction(){
 
         try {
             const respuesta = await clienteAxios.get('/proveedores');
-            dispatch( descargaProveedorExitosa(respuesta.data));
-            //asi se puede poner para que te muestre el cargando... y traiga los datos como es una api ligera el cargando ni se muestra
-            // setTimeout( async()=> {
-            //     const respuesta = await clienteAxios.get('/productos');
-            //     dispatch( descargaProductosExitosa(respuesta.data));
-            // },1000);
-
+            dispatch( descargaProveedorExitosa(respuesta.data))
         } catch (error) {
             dispatch(descargaProductosError());
         }
@@ -207,11 +195,6 @@ export function obtenerClientesAction(){
         try {
             const respuesta = await clienteAxios.get('/clientes');
             dispatch( descargaClienteExitosa(respuesta.data));
-            //asi se puede poner para que te muestre el cargando... y traiga los datos como es una api ligera el cargando ni se muestra
-            // setTimeout( async()=> {
-            //     const respuesta = await clienteAxios.get('/productos');
-            //     dispatch( descargaProductosExitosa(respuesta.data));
-            // },1000);
 
         } catch (error) {
             dispatch(descargaProductosError());
@@ -229,6 +212,7 @@ const descargaProductosExitosa = payload => ({
         type: DESCARGA_EXITO,
         payload: payload
 });
+
 const descargaProveedorExitosa = payload => ({
     type: DESCARGA_PROVEEDOR_EXITO,
     payload: payload
@@ -345,6 +329,31 @@ export function editarProductoAction(producto){
             dispatch( editarProductoExito(producto));
         } catch (error) {
             dispatch ( editarProductoError() );
+        }
+    }
+}
+export function editarProductoList(producto){
+    return async(dispatch)=>{
+        dispatch( editarProducto(producto) );
+
+        try {
+            await clienteAxios.put('http://localhost:4000/api/productos', producto);
+            dispatch( editarProductoExito(producto));
+            //Alerta
+            Swal.fire(
+                'Correcto',
+                'El producto se editó correctamente',
+                'success'
+            );
+        } catch (error) {
+            dispatch ( editarProductoError() );
+
+            //Alerta de error
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text:'No se pudo editar el producto'
+            });
         }
     }
 }

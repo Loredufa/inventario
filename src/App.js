@@ -11,6 +11,7 @@ import Proveedores from './components/Proveedores';
 import NuevoCliente from './components/NuevoCliente';
 import Clientes from './components/Clientes';
 import Import from './components/Import';
+import NuevaCompra from './components/NuevaCompra';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/productos/nuevocliente" element={<NuevoCliente/>} />
             <Route path="/productos/editar/:id" element={<EditarProducto/>} />
             <Route path="/productos/import" element={<Import/>} />
+            <Route path="/compra" element={<NuevaCompra/>} />
           </Routes>
         </div>
     </BrowserRouter>
