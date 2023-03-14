@@ -13,6 +13,10 @@ module.exports = function(sequelize) {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    piezas: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     monto: {
       type:DataTypes.STRING,
       allowNull:false,
@@ -20,7 +24,6 @@ module.exports = function(sequelize) {
     fecha_entrega: {
       type: DataTypes.DATE,
       allowNull: true,
-  },
+  }
   })
-
   };

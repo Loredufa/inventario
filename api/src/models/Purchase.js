@@ -16,7 +16,10 @@ module.exports = function (sequelize) {
     monto:{
       type:DataTypes.STRING,
       allowNull:false,
+    },
+    piezas:{
+      type:DataTypes.STRING,
+      allowNull:false,
     }
   })
-
   };

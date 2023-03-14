@@ -42,13 +42,13 @@ Category.hasMany(Product)
 Product.belongsTo (Category) // coloca categoryId en product
 
 Sale.hasMany(Move)
-Move.belongsTo (Sale) // coloca saleId en Move
+Move.belongsTo (Provider) // coloca providerId en Move
 
 Product.hasMany(Move)
 Move.belongsTo (Product) // coloca productId en Move
 
 Purchase.hasMany(Move)
-Move.belongsTo (Purchase) // coloca purchaseId en Move
+Move.belongsTo (Customer) // coloca customerId en Move
 
 module.exports = {
     conn: sequelize,

@@ -6,6 +6,8 @@ import {
     DESCARGA_EXITO,
     DESCARGA_PROVEEDOR_EXITO,
     DESCARGA_CIENTE_EXITO,
+    DESCARGA_VENTAS_EXITO,
+    DESCARGA_COMPRAS_EXITO,
     DESCARGA_ERROR,
     OBTENER_ELIMINAR,
     ELIMINADO_EXITO,
@@ -21,6 +23,8 @@ const initialState = {
     productos: [],
     proveedores: [],
     clientes: [],
+    ventas: [],
+    compras:[],
     error: null,
     loading: false,
     productoeliminar: null,
@@ -77,6 +81,22 @@ export default function (state = initialState, action ) {
                     loading: false,
                     error: null,
                     clientes: action.payload,
+                        
+            }
+            case DESCARGA_VENTAS_EXITO:
+                return{
+                    ...state,
+                    loading: false,
+                    error: null,
+                    ventas: action.payload,
+                        
+            }
+            case DESCARGA_COMPRAS_EXITO:
+                return{
+                    ...state,
+                    loading: false,
+                    error: null,
+                    compras: action.payload,
                         
             }
         case OBTENER_ELIMINAR:

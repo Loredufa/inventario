@@ -6,6 +6,8 @@ import {
     DESCARGA_EXITO,
     DESCARGA_PROVEEDOR_EXITO,
     DESCARGA_CIENTE_EXITO,
+    DESCARGA_VENTAS_EXITO,
+    DESCARGA_COMPRAS_EXITO,
     DESCARGA_ERROR,
     OBTENER_ELIMINAR,
     ELIMINADO_EXITO,
@@ -202,6 +204,34 @@ export function obtenerClientesAction(){
     }
 }
 
+export function obtenerVentasAction(){
+    return async (dispatch) => {
+        dispatch( descargarProductos());
+
+        try {
+            const respuesta = await clienteAxios.get('/ventas');
+            dispatch( descargaVentaExitosa(respuesta.data));
+
+        } catch (error) {
+            dispatch(descargaProductosError());
+        }
+    }
+}
+
+export function obtenerComprasAction(){
+    return async (dispatch) => {
+        dispatch( descargarProductos());
+
+        try {
+            const respuesta = await clienteAxios.get('/compras');
+            dispatch( descargaCompraExitosa(respuesta.data));
+
+        } catch (error) {
+            dispatch(descargaProductosError());
+        }
+    }
+}
+
 
 const descargarProductos = () => ({
     type: COMENZAR_DESCARGA,
@@ -221,6 +251,15 @@ const descargaClienteExitosa = payload => ({
     type: DESCARGA_CIENTE_EXITO,
     payload: payload
 });
+const descargaVentaExitosa = payload => ({
+    type: DESCARGA_VENTAS_EXITO,
+    payload: payload
+});
+const descargaCompraExitosa = payload => ({
+    type: DESCARGA_COMPRAS_EXITO,
+    payload: payload
+});
+
 
 const descargaProductosError = () => ({
     type: DESCARGA_ERROR,

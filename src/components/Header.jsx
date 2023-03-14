@@ -11,7 +11,7 @@ const Header = () => {
             </div>
 
             <Link
-                className="btn btn-danger nuevo-post d-block d-md-inline-block"
+                className="btn btn-danger nuevo-post d-block"
                 to={'/productos/nuevo'}>Agregar Producto &#43;
             </Link>
             <Link
@@ -21,6 +21,14 @@ const Header = () => {
             <Link
                 className="btn btn-danger nuevo-post d-block d-md-inline-block"
                 to={'/productos/nuevocliente'}>Agregar Cliente &#43;
+            </Link>
+            <Link
+                className="btn btn-danger nuevo-post d-block d-md-inline-block"
+                to={'/compra'}>Agregar Compra &#43;
+            </Link>
+            <Link
+                className="btn btn-danger nuevo-post d-block d-md-inline-block"
+                to={'/venta'}>Agregar Venta &#43;
             </Link>
             <Link
                 className="btn btn-danger nuevo-post d-block d-md-inline-block"
@@ -34,9 +42,17 @@ const Header = () => {
                 className="btn btn-danger nuevo-post d-block d-md-inline-block"
                 to={'/clientes'}>Clientes
             </Link>
-            <Link
+            {/* <Link
                 className="btn btn-danger nuevo-post d-block d-md-inline-block"
                 to={'/'}>Productos
+            </Link> */}
+            <Link
+                className="btn btn-danger nuevo-post d-block d-md-inline-block"
+                to={'/ventas'}>Ventas
+            </Link>
+            <Link
+                className="btn btn-danger nuevo-post d-block d-md-inline-block"
+                to={'/compras'}>Compras
             </Link>
         </nav>
 

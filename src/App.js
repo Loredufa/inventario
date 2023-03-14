@@ -12,6 +12,9 @@ import NuevoCliente from './components/NuevoCliente';
 import Clientes from './components/Clientes';
 import Import from './components/Import';
 import NuevaCompra from './components/NuevaCompra';
+import NuevaVenta from './components/NuevaVenta';
+import Ventas from './components/Ventas';
+import Compras from './components/Compras';
 
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
             <Route path="/productos/editar/:id" element={<EditarProducto/>} />
             <Route path="/productos/import" element={<Import/>} />
             <Route path="/compra" element={<NuevaCompra/>} />
+            <Route path="/venta" element={<NuevaVenta/>} />
+            <Route path="/ventas" element={<Ventas/>} />
+            <Route path="/compras" element={<Compras/>} />
           </Routes>
         </div>
     </BrowserRouter>
