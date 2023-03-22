@@ -44,8 +44,8 @@ const CompraList = ({compra}) => {
         <tr className="text-center">
             <td>{fecha}</td>
             <td>{piezas}</td>
-            <td>${monto}</td>
-            <td><span className="font-weight-bold">{providerId}</span></td>
+            <td><span className="font-weight-bold">${monto}</span></td>
+            <td>{providerId}</td>
             <td className="acciones">
                 {/* <button 
                     type= "button"

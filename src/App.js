@@ -15,6 +15,7 @@ import NuevaCompra from './components/NuevaCompra';
 import NuevaVenta from './components/NuevaVenta';
 import Ventas from './components/Ventas';
 import Compras from './components/Compras';
+import LandingPage from './components/Landing';
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
       <Header/>
         <div className="container mt-5">
           <Routes>
-            <Route path="/" element={<Productos/>} />
+          <Route path="/" element={<LandingPage/>} />
+            <Route path="/home" element={<Productos/>} />
             <Route path="/proveedores" element={<Proveedores/>} />
             <Route path="/clientes" element={<Clientes/>} />
             <Route path="/productos/nuevo" element={<NuevoProducto/>} />

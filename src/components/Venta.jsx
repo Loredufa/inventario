@@ -46,7 +46,7 @@ const Venta= ({ onChange, onRemove, nombre, codigo_barras, cantidad, precio, tot
                                     onChange={e => onChange("cantidad", Number(e.target.value))}
                                 />
                                 <input 
-                                    type="number"
+                                    type="text"
                                     key="pzas"
                                     className="input_small ref "
                                     name="pzas"

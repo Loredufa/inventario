@@ -44,9 +44,9 @@ const VentaList = ({venta}) => {
         <tr className="text-center">
             <td>{fecha}</td>
             <td>{piezas}</td>
-            <td>${monto}</td>
-            <td><span className="font-weight-bold">{customerId}</span></td>
-            <td><span className="font-weight-bold"> {fecha_entrega}</span></td>
+            <td><span className="font-weight-bold">${monto}</span></td>
+            <td><span >{customerId}</span></td>
+            <td><span> {fecha_entrega}</span></td>
             <td className="acciones">
                 {/* <button 
                     type= "button"
