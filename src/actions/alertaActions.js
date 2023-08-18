@@ -1,7 +1,7 @@
 import {
     MOSTRAR_ALERTA,
     OCULTAR_ALERTA
-} from '../types';
+} from '../types'; 
 
 export function mostrarAlertaAction(alerta) {
     return ( dispatch ) => {
